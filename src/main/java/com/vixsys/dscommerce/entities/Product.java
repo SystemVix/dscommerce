@@ -3,6 +3,7 @@ package com.vixsys.dscommerce.entities;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -90,5 +91,16 @@ public class Product
    public Set<Category> getCategories()
    {
       return categories;
+   }
+
+   public Set<OrderItem> getItems()
+   {
+      return items;
+   }
+
+   public List<Order> getOrders()
+   {
+      return items.stream().map(OrderItem::getOrder).toList();
+      // (OrderItem::getOrder) corresponde a (x -> x.getOrder())
    }
 }
