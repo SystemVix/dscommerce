@@ -7,8 +7,11 @@ import com.vixsys.dscommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,20 +23,25 @@ public class ProductController
    private ProductService service;
 
    @GetMapping(value = "/{id}")
-   public ProductDto findById(@PathVariable Long id)
+   public ResponseEntity<ProductDto> findById(@PathVariable Long id)
    {
-      return service.findById(id);
+      ProductDto dto = service.findById(id);
+      return ResponseEntity.ok(dto);
    }
 
    @GetMapping
-   public Page<ProductDto> findAll(Pageable pageable)
+   public ResponseEntity<Page<ProductDto>> findAll(Pageable pageable)
    {
-      return service.findAll(pageable);
+      Page<ProductDto> dto = service.findAll(pageable);
+      return ResponseEntity.ok(dto);
    }
 
    @PostMapping
-   public ProductDto insert(@RequestBody ProductDto dto)
+   public ResponseEntity<ProductDto> insert(@RequestBody ProductDto dto)
    {
-      return service.insert(dto);
+      dto = service.insert(dto);
+      URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+         .path("/{id}").buildAndExpand(dto.getId_product()).toUri();
+      return  ResponseEntity.created(uri).body(dto);
    }
 }
