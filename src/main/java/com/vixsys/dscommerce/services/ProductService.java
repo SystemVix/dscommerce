@@ -32,4 +32,18 @@ public class ProductService
       return result.map(ProductDto::new);
       // Código do professor: return result.map(x -> new ProductDto(x));
    }
+
+   @Transactional
+   public ProductDto insert(ProductDto dto)
+   {
+      Product entity = new Product();
+      entity.setName(dto.getName());
+      entity.setDescription(dto.getDescription());
+      entity.setPriceTable(dto.getPriceTable());
+      entity.setImageUri(dto.getImageUri());
+
+      entity = repository.save(entity);
+
+      return new ProductDto(entity);
+   }
 }
