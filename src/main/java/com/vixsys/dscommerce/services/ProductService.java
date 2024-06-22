@@ -18,6 +18,7 @@ public class ProductService
    @Autowired
    private ProductRepository repository;
 
+   // Método para buscar um item por ID
    @Transactional(readOnly = true)
    public ProductDto findById(Long id)
    {
@@ -25,6 +26,7 @@ public class ProductService
       return new ProductDto(product);
    }
 
+   // Método para buscar todos os itens
    @Transactional(readOnly = true)
    public Page<ProductDto> findAll(Pageable pageable)
    {
@@ -33,17 +35,32 @@ public class ProductService
       // Código do professor: return result.map(x -> new ProductDto(x));
    }
 
-   @Transactional
-   public ProductDto insert(ProductDto dto)
+   // Método auxiliar para copiar os dados do Dto para o Entity
+   private void copyDtoToEntity(ProductDto dto, Product entity)
    {
-      Product entity = new Product();
       entity.setName(dto.getName());
       entity.setDescription(dto.getDescription());
       entity.setPriceTable(dto.getPriceTable());
       entity.setImageUri(dto.getImageUri());
+   }
 
+   // Método para inserir um novo item
+   @Transactional
+   public ProductDto insert(ProductDto dto)
+   {
+      Product entity = new Product();
+      copyDtoToEntity(dto, entity);
       entity = repository.save(entity);
+      return new ProductDto(entity);
+   }
 
+   // Método para atualizar um item
+   @Transactional
+   public ProductDto update(Long id, ProductDto dto)
+   {
+      Product entity = repository.getReferenceById(id);
+      copyDtoToEntity(dto, entity);
+      entity = repository.save(entity);
       return new ProductDto(entity);
    }
 }
