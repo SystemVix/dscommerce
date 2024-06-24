@@ -63,4 +63,11 @@ public class ProductService
       entity = repository.save(entity);
       return new ProductDto(entity);
    }
+
+   // Método para excluir um item
+   @Transactional
+   public void delete(Long id)
+   {
+      repository.deleteById(id);
+   }
 }
