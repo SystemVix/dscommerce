@@ -10,8 +10,6 @@ public class ProductDto
    private Double priceTable;
    private String imageUri;
 
-   public ProductDto() {}
-
    public ProductDto(Long id_product, String name, String description, Double priceTable, String imageUri)
    {
       this.id_product = id_product;
