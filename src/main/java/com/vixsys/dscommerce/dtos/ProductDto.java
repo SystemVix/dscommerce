@@ -1,12 +1,20 @@
 package com.vixsys.dscommerce.dtos;
 
 import com.vixsys.dscommerce.entities.Product;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 public class ProductDto
 {
    private Long id_product;
+   @NotBlank(message = "Preenchimento obrigatório!")
+   @Size(min = 3, max = 80, message = "Comprimento entre 3 e 80 caracteres!")
    private String name;
+   @NotBlank(message = "Preenchimento obrigatório e mínimo de 10 caracteres!")
+   @Size(min = 10)
    private String description;
+   @Positive(message = "O preço deve ser positivo!")
    private Double priceTable;
    private String imageUri;
 
