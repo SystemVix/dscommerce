@@ -27,12 +27,6 @@ public class UserService implements UserDetailsService
          throw new UsernameNotFoundException("Email not found");
       }
 
-      /*User user = repository.findByEmail(username);
-      if (user == null)
-      {
-         throw new UsernameNotFoundException("E-mail não encontrado!");
-      }*/
-
       User user = new User();
       user.setEmail(result.get(0).getUsername());
       user.setPassword(result.get(0).getPassword());
