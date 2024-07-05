@@ -1,43 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.7.3</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.vixsys</groupId>
-	<artifactId>dscommerce</artifactId>
+	<artifactId>dscatalog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dscommerce</name>
-	<description>Demo projeto Java Spring Boot</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>17</java.version>
-		<spring-cloud.version>2023.0.2</spring-cloud.version> <!-- ADICIONADA -->
+		<spring-cloud.version>2021.0.3</spring-cloud.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -45,30 +32,8 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions> <!-- ADICIONADA -->
-				<exclusion> <!-- ADICIONADA -->
-					<groupId>org.junit.vintage</groupId> <!-- ADICIONADA -->
-					<artifactId>junit-vintage-engine</artifactId> <!-- ADICIONADA -->
-				</exclusion> <!-- ADICIONADA -->
-			</exclusions> <!-- ADICIONADA -->
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
-		<dependency> <!-- ADICIONADA -->
-			<groupId>org.springframework.boot</groupId> <!-- ADICIONADA -->
-			<artifactId>spring-boot-starter-validation</artifactId> <!-- ADICIONADA -->
-		</dependency> <!-- ADICIONADA -->
-
-		<dependency> <!-- ADICIONADA -->
-			<groupId>org.springframework.boot</groupId> <!-- ADICIONADA -->
-			<artifactId>spring-boot-starter-security</artifactId> <!-- ADICIONADA -->
-		</dependency> <!-- ADICIONADA -->
-
-		<dependency> <!-- ADICIONADA -->
-			<groupId>org.springframework.security</groupId> <!-- ADICIONADA -->
-			<artifactId>spring-security-test</artifactId> <!-- ADICIONADA -->
-		</dependency> <!-- ADICIONADA -->
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -76,61 +41,71 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-		<dependency> <!-- ADICIONADA -->
-			<groupId>org.postgresql</groupId> <!-- ADICIONADA -->
-			<artifactId>postgresql</artifactId> <!-- ADICIONADA -->
-			<scope>runtime</scope> <!-- ADICIONADA -->
-			<!-- <version>42.7.3</version> -->
-		</dependency> <!-- ADICIONADA -->
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.security.oauth.boot/spring-security-oauth2-autoconfigure -->
-		<dependency> <!-- ADICIONADA -->
-			<groupId>org.springframework.security.oauth.boot</groupId> <!-- ADICIONADA -->
-			<artifactId>spring-security-oauth2-autoconfigure</artifactId> <!-- ADICIONADA -->
-			<version>2.6.8</version>
-		</dependency> <!-- ADICIONADA -->
-
-		<!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
 		<dependency>
-			<groupId>jakarta.validation</groupId>
-			<artifactId>jakarta.validation-api</artifactId>
-			<version>3.0.2</version>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>8.0.0.CR2</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin> <!-- ADICIONADA -->
-				<groupId>org.apache.maven.plugins</groupId> <!-- ADICIONADA -->
-				<artifactId>maven-resources-plugin</artifactId> <!-- ADICIONADA -->
-				<version>3.1.0</version> <!-- ADICIONADA -->
-			</plugin> <!-- ADICIONADA -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version> <!--$NO-MVN-MAN-VER$ -->
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- <version>${project.parent.version}</version> -->
 			</plugin>
 		</plugins>
 	</build>
 
-	<dependencyManagement> <!-- ADICIONADA -->
-		<dependencies> <!-- ADICIONADA -->
-			<dependency> <!-- ADICIONADA -->
-				<groupId>org.springframework.cloud</groupId> <!-- ADICIONADA -->
-				<artifactId>spring-cloud-dependencies</artifactId> <!-- ADICIONADA -->
-				<version>${spring-cloud.version}</version> <!-- ADICIONADA -->
-				<type>pom</type> <!-- ADICIONADA -->
-				<scope>import</scope> <!-- ADICIONADA -->
-			</dependency> <!-- ADICIONADA -->
-		</dependencies> <!-- ADICIONADA -->
-	</dependencyManagement> <!-- ADICIONADA -->
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>

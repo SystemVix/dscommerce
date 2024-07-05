@@ -4,7 +4,7 @@ import com.vixsys.dscommerce.dtos.CustomError;
 import com.vixsys.dscommerce.dtos.ValidationError;
 import com.vixsys.dscommerce.services.exceptions.DatabaseException;
 import com.vixsys.dscommerce.services.exceptions.ResourceNotFoundException;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

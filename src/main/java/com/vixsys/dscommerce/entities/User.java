@@ -1,6 +1,6 @@
 package com.vixsys.dscommerce.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -29,7 +29,7 @@ public class User implements UserDetails
       Um usuário possuirá somente 1 ou 2 perfis. */
    @ManyToMany(fetch = FetchType.EAGER)
    @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"),
-           inverseJoinColumns = @JoinColumn(name = "role_id"))
+      inverseJoinColumns = @JoinColumn(name = "role_id"))
    private Set<Role> roles = new HashSet<>();
 
    public User() {}
@@ -114,12 +114,6 @@ public class User implements UserDetails
       return roles;
    }
 
-   public void addRole(Role role)
-   {
-      roles.add(role);
-   }
-
-   // Conferir se é necessário mesmo
    @Override
    public Collection<? extends GrantedAuthority> getAuthorities()
    {

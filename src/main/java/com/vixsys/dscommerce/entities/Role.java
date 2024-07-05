@@ -1,6 +1,6 @@
 package com.vixsys.dscommerce.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity
@@ -14,20 +14,20 @@ public class Role implements GrantedAuthority
 
    public Role() {}
 
-   public Role(Long id, String authority)
+   public Role(Long id_role, String authority)
    {
       this.id_role = id_role;
       this.authority = authority;
    }
 
-   public Long getId()
+   public Long getId_role()
    {
       return id_role;
    }
 
-   public void setId(Long id)
+   public void setId_role(Long id_role)
    {
-      this.id_role = id;
+      this.id_role = id_role;
    }
 
    @Override
