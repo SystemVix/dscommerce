@@ -1,7 +1,9 @@
 package com.vixsys.dscommerce.services;
 
+import com.vixsys.dscommerce.dtos.CategoryDto;
 import com.vixsys.dscommerce.dtos.ProductDto;
 import com.vixsys.dscommerce.dtos.ProductMinDto;
+import com.vixsys.dscommerce.entities.Category;
 import com.vixsys.dscommerce.entities.Product;
 import com.vixsys.dscommerce.repositories.ProductRepository;
 import com.vixsys.dscommerce.services.exceptions.DatabaseException;
@@ -47,6 +49,13 @@ public class ProductService
       entity.setDescription(dto.getDescription());
       entity.setPriceTable(dto.getPriceTable());
       entity.setImageUri(dto.getImageUri());
+      entity.getCategories().clear();
+      for (CategoryDto catDto : dto.getCategories())
+      {
+         Category cat = new Category();
+         cat.setId_category(catDto.getId());
+         entity.getCategories().add(cat);
+      }
    }
 
    // Método para inserir um novo item

@@ -1,9 +1,13 @@
 package com.vixsys.dscommerce.dtos;
 
+import com.vixsys.dscommerce.entities.Category;
 import com.vixsys.dscommerce.entities.Product;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDto
 {
@@ -17,6 +21,9 @@ public class ProductDto
    @Positive(message = "O preço deve ser positivo!")
    private Double priceTable;
    private String imageUri;
+
+   @NotEmpty(message = "Escolha pelo menos uma categoria!")
+   private List<CategoryDto> categories = new ArrayList<>();
 
    public ProductDto(Long id_product, String name, String description, Double priceTable, String imageUri)
    {
@@ -34,6 +41,10 @@ public class ProductDto
       description = entity.getDescription();
       priceTable = entity.getPriceTable();
       imageUri = entity.getImageUri();
+      for (Category cat : entity.getCategories())
+      {
+         categories.add(new CategoryDto(cat));
+      }
    }
 
    public Long getId_product()
@@ -59,5 +70,10 @@ public class ProductDto
    public String getImageUri()
    {
       return imageUri;
+   }
+
+   public List<CategoryDto> getCategories()
+   {
+      return categories;
    }
 }
