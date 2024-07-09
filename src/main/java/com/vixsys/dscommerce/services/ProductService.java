@@ -1,6 +1,7 @@
 package com.vixsys.dscommerce.services;
 
 import com.vixsys.dscommerce.dtos.ProductDto;
+import com.vixsys.dscommerce.dtos.ProductMinDto;
 import com.vixsys.dscommerce.entities.Product;
 import com.vixsys.dscommerce.repositories.ProductRepository;
 import com.vixsys.dscommerce.services.exceptions.DatabaseException;
@@ -32,10 +33,10 @@ public class ProductService
 
    // Método para buscar todos os itens
    @Transactional(readOnly = true)
-   public Page<ProductDto> findAll(String name, Pageable pageable)
+   public Page<ProductMinDto> findAll(String name, Pageable pageable)
    {
       Page<Product> result = repository.searchByName(name, pageable);
-      return result.map(ProductDto::new);
+      return result.map(ProductMinDto::new);
       // Código do professor: return result.map(x -> new ProductDto(x));
    }
 

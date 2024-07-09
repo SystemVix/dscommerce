@@ -1,6 +1,7 @@
 package com.vixsys.dscommerce.controllers;
 
 import com.vixsys.dscommerce.dtos.ProductDto;
+import com.vixsys.dscommerce.dtos.ProductMinDto;
 import com.vixsys.dscommerce.services.ProductService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +29,13 @@ public class ProductController
    }
 
    @GetMapping
-   public ResponseEntity<Page<ProductDto>> findAll
+   public ResponseEntity<Page<ProductMinDto>> findAll
       (
          @RequestParam(name = "name", defaultValue = "") String name,
          Pageable pageable
       )
    {
-      Page<ProductDto> dto = service.findAll(name, pageable);
+      Page<ProductMinDto> dto = service.findAll(name, pageable);
       return ResponseEntity.ok(dto);
    }
 
