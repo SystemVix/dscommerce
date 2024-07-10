@@ -1,7 +1,6 @@
 package com.vixsys.dscommerce.dtos;
 
 import com.vixsys.dscommerce.entities.OrderItem;
-import com.vixsys.dscommerce.entities.Product;
 
 public class OrderItemDto
 {

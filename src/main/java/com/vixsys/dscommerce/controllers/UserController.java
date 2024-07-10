@@ -1,6 +1,5 @@
 package com.vixsys.dscommerce.controllers;
 
-import com.vixsys.dscommerce.dtos.ProductDto;
 import com.vixsys.dscommerce.dtos.UserDto;
 import com.vixsys.dscommerce.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

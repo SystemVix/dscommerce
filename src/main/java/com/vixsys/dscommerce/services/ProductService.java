@@ -93,7 +93,6 @@ public class ProductService
       {
          repository.deleteById(id);
       }
-      // Não está retornando erro ao deletar item inexistente. Resposta 204
       catch (EmptyResultDataAccessException e)
       {
          throw new ResourceNotFoundException("Recurso não encontrado!");

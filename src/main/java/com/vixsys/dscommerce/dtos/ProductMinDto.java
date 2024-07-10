@@ -2,10 +2,6 @@ package com.vixsys.dscommerce.dtos;
 
 import com.vixsys.dscommerce.entities.Product;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
-
 public class ProductMinDto
 {
    private Long id_product;

@@ -1,7 +1,6 @@
 package com.vixsys.dscommerce.controllers;
 
 import com.vixsys.dscommerce.dtos.OrderDto;
-import com.vixsys.dscommerce.dtos.ProductDto;
 import com.vixsys.dscommerce.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -25,7 +25,7 @@ public class User implements UserDetails
    private List<Order> orders = new ArrayList<>();
 
    /* Padrão de comportamento da JPA alterado porque apesar da relação ser
-      muitos para muitos, é sabido que não carregará muitos dados associados
+      muitos para muitos, é sabido que não carregará muitos dados associados.
       Um usuário possuirá somente 1 ou 2 perfis. */
    @ManyToMany(fetch = FetchType.EAGER)
    @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"),
