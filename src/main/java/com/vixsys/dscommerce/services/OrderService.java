@@ -17,10 +17,13 @@ import java.time.Instant;
 public class OrderService
 {
    @Autowired
-   private OrderRepository repository;
+   private AuthService authService;
 
    @Autowired
    private OrderItemRepository orderItemRepository;
+
+   @Autowired
+   private OrderRepository repository;
 
    @Autowired
    private ProductRepository productRepository;
@@ -34,6 +37,7 @@ public class OrderService
    {
       Order order = repository.findById(id).orElseThrow
               (() -> new ResourceNotFoundException("Pedido não encontrado!"));
+      authService.validateSelfOrAdmin(order.getClient().getId_user());
       return new OrderDto(order);
    }
 

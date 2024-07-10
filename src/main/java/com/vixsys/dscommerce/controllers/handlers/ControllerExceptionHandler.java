@@ -3,6 +3,7 @@ package com.vixsys.dscommerce.controllers.handlers;
 import com.vixsys.dscommerce.dtos.CustomError;
 import com.vixsys.dscommerce.dtos.ValidationError;
 import com.vixsys.dscommerce.services.exceptions.DatabaseException;
+import com.vixsys.dscommerce.services.exceptions.ForbiddenException;
 import com.vixsys.dscommerce.services.exceptions.ResourceNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -42,6 +43,14 @@ public class ControllerExceptionHandler
       {
          err.addError(f.getField(), f.getDefaultMessage());
       }
+      return ResponseEntity.status(status).body(err);
+   }
+
+   @ExceptionHandler(ForbiddenException.class)
+   public ResponseEntity<CustomError> forbidden(ForbiddenException e, HttpServletRequest request)
+   {
+      HttpStatus status = HttpStatus.FORBIDDEN;
+      CustomError err = new CustomError(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
       return ResponseEntity.status(status).body(err);
    }
 }
