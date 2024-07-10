@@ -4,6 +4,7 @@ import com.vixsys.dscommerce.entities.Order;
 import com.vixsys.dscommerce.entities.OrderItem;
 import com.vixsys.dscommerce.entities.OrderStatus;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class OrderDto
 
    private ClientDto client;
    private PaymentDto payment;
+   @NotEmpty(message = "Deve conter pelo menos um ítem!")
    private List<OrderItemDto> items = new ArrayList<>();
 
    public OrderDto(Long id, Instant moment, OrderStatus status, ClientDto client, PaymentDto payment)
