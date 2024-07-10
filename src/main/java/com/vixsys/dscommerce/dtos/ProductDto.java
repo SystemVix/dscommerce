@@ -2,10 +2,8 @@ package com.vixsys.dscommerce.dtos;
 
 import com.vixsys.dscommerce.entities.Category;
 import com.vixsys.dscommerce.entities.Product;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
+
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +16,7 @@ public class ProductDto
    @NotBlank(message = "Preenchimento obrigatório e mínimo de 10 caracteres!")
    @Size(min = 10)
    private String description;
+   @NotNull(message = "Preenchimento obrigatório!")
    @Positive(message = "O preço deve ser positivo!")
    private Double priceTable;
    private String imageUri;
